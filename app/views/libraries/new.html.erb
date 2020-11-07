@@ -1,0 +1,22 @@
+<h1>Add New Libraries</h1>
+
+<%= form_for @library do |f| %>
+  
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name, autofocus: true, autocomplete: "Library Name" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :desctiption %>
+    <%= f.text_field :desctiption, autofocus: true, autocomplete: "Description" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :address %>
+    <%= f.text_field :address, autofocus: true, autocomplete: "Description" %>
+  </div>
+
+  <%= f.submit "Submit" %>
+
+<% end %>

@@ -1,0 +1,27 @@
+<h1>Libraries</h1>
+
+<%= current_user.email %> <br>
+<%= current_user.first_name %>
+<%= current_user.last_name %><br>
+
+<%= link_to('Logout', destroy_user_session_path, method: :delete) %><br><br>
+<%= link_to('Add Library', libraries_new_path) %>
+
+<%= @libraries.each do |library| %>
+  <table> 
+    <thead>
+      <tr>
+        <th> Name </th>
+        <th> Address </th>
+        <th> Description</th>
+        <th> Clients</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><%= library.name %></tr>
+      <tr><%= library.address %></tr>
+      <tr><%= library.description %></tr>
+      <tr>Clients</tr>
+    </tbody>
+  </table>
+<% end %>
