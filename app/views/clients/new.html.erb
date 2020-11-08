@@ -1,2 +1,25 @@
-<h1>Clients#new</h1>
-<p>Find me in app/views/clients/new.html.erb</p>
+<h1>Add New Client to the Library</h1>
+
+
+<%= form_for @client do |f| %>
+  
+  <div class="field">
+    <%= f.label :first_name %>
+    <%= f.text_field :first_name, autofocus: true, autocomplete: "First Name" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :second_name %>
+    <%= f.text_field :second_name, autofocus: true, autocomplete: "Second Name" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :library %>
+    <%= f.select :library_id, Library.all.collect {|x| [x.name, x.id]}, {:include_blank => "Select Library"} %>
+  </div>
+
+
+  <%= f.submit "Submit" %>
+
+
+<% end %>

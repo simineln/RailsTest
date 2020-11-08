@@ -1,0 +1,23 @@
+<h1><%= @library.name %></h1>
+
+<p>Adress - <%= @library.address %></p>
+<p>Description - <%= @library.description%></p>
+
+
+<p>Clients <%= link_to "Add Client", clients_new_path(@library.id) %> </p>
+<table>
+  <tr>
+    <th>#</th>
+    <th>First name</th>
+    <th>Second name</th>
+  </tr>
+  <% @clients.each do |client| %>
+    <tr>
+      <td><%= client.id %></td>
+      <td><%= client.first_name %></td>
+      <td><%= client.second_name %></td>
+    </tr>
+  <% end %>
+
+
+</table>

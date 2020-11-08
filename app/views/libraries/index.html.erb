@@ -5,23 +5,23 @@
 <%= current_user.last_name %><br>
 
 <%= link_to('Logout', destroy_user_session_path, method: :delete) %><br><br>
-<%= link_to('Add Library', libraries_new_path) %>
+<%= link_to('Add Library', libraries_new_path) %><br><br>
 
-<%= @libraries.each do |library| %>
-  <table> 
-    <thead>
-      <tr>
-        <th> Name </th>
-        <th> Address </th>
-        <th> Description</th>
-        <th> Clients</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr><%= library.name %></tr>
-      <tr><%= library.address %></tr>
-      <tr><%= library.description %></tr>
-      <tr>Clients</tr>
-    </tbody>
-  </table>
-<% end %>
+<table> 
+  <tr>
+    <th> Name </th>
+    <th> Address </th>
+    <th> Description</th>
+    <th> Clients</th>
+    <th> View </th>
+  </tr>
+  <% @libraries.each do |library| %>
+    <tr>
+      <td><%= library.name %></td>
+      <td><%= library.address %></td>
+      <td><%= library.description %></td>
+      <td>Clients<td>
+      <td><%= link_to "View Library", library_path(library) %></td>
+    </tr> 
+  <% end %>
+</table>
