@@ -14,13 +14,30 @@ class LibrariesController < ApplicationController
   end
 
   def edit
+    @library = Library.find(params[:id])
+  end
+
+  def update
+    @library = Library.find(params[:id])
+    if @library.update(library_params)
+      flash[:notice] = 'Library Updated'
+      redirect_to root_path
+    else
+      render 'new'
+    end
   end
 
   def destroy
+    @library = Library.find(params[:id])
+    @library.destroy
+
+    flash[:notice] = 'Library Removed'
+    redirect_to libraries_path
   end
 
   def index
-    @libraries = Library.all
+    # @libraries = Library.all
+    @libraries = Library.order(params[:sort])
   end
 
   def show

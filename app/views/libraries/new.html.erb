@@ -1,22 +1,23 @@
-<h1>Add New Libraries</h1>
+<h1 class="page-header">Add New Library</h1>
 
 <%= form_for @library do |f| %>
   
-  <div class="field">
+  <div class="form-group">
     <%= f.label :name %>
-    <%= f.text_field :name, autofocus: true, autocomplete: "Library Name" %>
+    <%= f.text_field :name, autofocus: true, autocomplete: "Library Name", class: 'form-control' %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :address %>
-    <%= f.text_field :address, autofocus: true, autocomplete: "Address" %>
+    <%= f.text_field :address, autofocus: true, autocomplete: "Address", class: 'form-control' %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :description %>
-    <%= f.text_area :description, autofocus: true, autocomplete: "Description" %>
+    <%= f.text_area :description, autofocus: true, autocomplete: "Description", class: 'form-control' %>
   </div>
 
-  <%= f.submit "Submit" %>
+  <%= f.submit "Submit", class: 'btn btn-info' %>
+  <%= link_to "Cancel", libraries_path, class: 'btn btn-secondary' %>
 
 <% end %>

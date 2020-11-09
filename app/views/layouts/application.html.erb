@@ -10,6 +10,40 @@
   </head>
 
   <body>
-    <%= yield %>
+
+
+    <section>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card card-body bg-light">
+
+              <div id="user_nav">
+                <% if current_user %>
+                  <%= link_to "Home", root_path, class: "btn btn-dark btn-sm" %>
+                  Logged in as <%= current_user.email %>
+                  <%= current_user.first_name %>
+                  <%= current_user.last_name %><br>
+                <% end %>
+              </div>
+
+            <% if flash[:notice] %>
+              <div class="alert alert-success"><%= flash[:notice] %> </div>
+            <% end %>
+
+            <% if flash[:alert] %>
+              <div class="alert alert-danger"><%= flash[:alert] %> </div>
+            <% end %>
+            <br>
+              <%= yield %>
+            </div>
+          </div>
+      </div>
+    </section>
+
+    <footer>
+      <p>Copyright &copy; 2020 | Rails Test Project | <%= link_to "Logout", destroy_user_session_path, method: :delete %></p>
+    </footer>
+
   </body>
 </html>

@@ -17,7 +17,11 @@ Rails.application.routes.draw do
 
   get '/libraries' => "libraries#index", :as => :user_root
 
-  resources :libraries, :clients
+  resources :libraries
+
+  resources :libraries do
+    resources :clients
+  end
 
   root to: 'libraries#index'
 end

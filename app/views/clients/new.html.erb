@@ -1,25 +1,24 @@
-<h1>Add New Client to the Library</h1>
+<h1 class="page-header">Add New Client to <%= @library.name %></h1>
 
 
-<%= form_for @client do |f| %>
-  
-  <div class="field">
+<%= form_for [@library, @library.clients.build] do |f| %>
+
+  <div class="form-group">
     <%= f.label :first_name %>
-    <%= f.text_field :first_name, autofocus: true, autocomplete: "First Name" %>
+    <%= f.text_field :first_name, autofocus: true, autocomplete: "First Name", class: 'form-control' %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :second_name %>
-    <%= f.text_field :second_name, autofocus: true, autocomplete: "Second Name" %>
+    <%= f.text_field :second_name, autofocus: true, autocomplete: "Second Name", class: 'form-control' %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :library %>
-    <%= f.select :library_id, Library.all.collect {|x| [x.name, x.id]}, {:include_blank => "Select Library"} %>
+    <%= f.select :library_id, Library.all.collect {|x| [x.name, x.id]}, {:include_blank => "Select Library"}, class: 'form-control' %>
   </div>
 
-
-  <%= f.submit "Submit" %>
-
+  <%= f.submit "Submit", class: 'btn btn-info' %>
+  <%= link_to "Cancel", library_path(@library), class: 'btn btn-secondary' %>
 
 <% end %>
