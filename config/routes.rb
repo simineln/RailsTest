@@ -19,10 +19,14 @@ Rails.application.routes.draw do
   get '/libraries' => 'libraries#index', :as => :user_root
 
   resources :libraries
-
   resources :libraries do
     resources :clients
   end
+
+  mount Rswag::Ui::Engine => '/api-docs'
+  mount Rswag::Api::Engine => '/api-docs'
+  # mount Rswag::Ui::Engine, at: 'library-docs'
+  # mount Rswag::Api::Engine, at: 'library-docs'
 
   root to: 'libraries#index'
 end

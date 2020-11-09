@@ -1,0 +1,55 @@
+---
+openapi: 3.0.1
+info:
+  title: API V1
+  version: v1
+paths:
+  "/libraries":
+    post:
+      summary: Adds new library
+      tags:
+      - Libraries
+      parameters: []
+      responses:
+        '201':
+          description: library added
+          content: {}
+        '422':
+          description: invalid request
+          content: {}
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                address:
+                  type: string
+                description:
+                  type: string
+              required:
+              - name
+              - address
+              - description
+  "/libraries/{id}":
+    delete:
+      summary: Delete a library
+      tags:
+      - Libraries
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Library deleted
+          content: {}
+servers:
+- url: http://localhost:3000
+  variables:
+    defaultHost:
+      default: www.example.com
