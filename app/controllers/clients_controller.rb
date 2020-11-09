@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ClientsController < ApplicationController
   def new
     @client = Client.new
@@ -41,8 +43,7 @@ class ClientsController < ApplicationController
     redirect_to library_path(@library)
   end
 
-  def show
-  end
+  def show; end
 
   private def client_params
     params.require(:client).permit(:first_name, :second_name, :library_id)

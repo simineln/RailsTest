@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 class LibrariesController < ApplicationController
   def new
-    @page_title = "Add Library"
+    @page_title = 'Add Library'
     @library = Library.new
   end
 
@@ -36,14 +38,16 @@ class LibrariesController < ApplicationController
   end
 
   def index
-    # @libraries = Library.all
-    @libraries = Library.order(params[:sort])
+    @libraries = if params[:sort] == 'clients'
+                   Library.order(:clients_count)
+                 else
+                   Library.order(params[:sort])
+                 end
   end
 
   def show
     @library = Library.find(params[:id])
     @clients = @library.clients
-
   end
 
   private def library_params
