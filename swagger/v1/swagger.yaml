@@ -33,6 +33,48 @@ paths:
               - name
               - address
               - description
+    get:
+      summary: Retrieves all libraries
+      tags:
+      - Libraries
+      responses:
+        '200':
+          description: Library found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  name:
+                    type: string
+                  address:
+                    type: string
+                  description:
+                    type: string
+                required:
+                - id
+                - name
+                - address
+                - description
+            application/xml:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  name:
+                    type: string
+                  address:
+                    type: string
+                  description:
+                    type: string
+                required:
+                - id
+                - name
+                - address
+                - description
   "/libraries/{id}":
     delete:
       summary: Delete a library
@@ -48,8 +90,62 @@ paths:
         '200':
           description: Library deleted
           content: {}
+    get:
+      summary: Retrieves a library
+      tags:
+      - Libraries
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Library found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  name:
+                    type: string
+                  address:
+                    type: string
+                  description:
+                    type: string
+                required:
+                - id
+                - name
+                - address
+                - description
+            application/xml:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  name:
+                    type: string
+                  address:
+                    type: string
+                  description:
+                    type: string
+                required:
+                - id
+                - name
+                - address
+                - description
+        '404':
+          description: Library not found
+          content: {}
+        '406':
+          description: unsupported accept header
+          content: {}
 servers:
 - url: http://localhost:3000
   variables:
     defaultHost:
-      default: www.example.com
+      default: http://localhost:3000
