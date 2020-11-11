@@ -43,7 +43,10 @@ class ClientsController < ApplicationController
     redirect_to library_path(@library)
   end
 
-  def show; end
+  def show
+    @library = Library.find(params[:library_id])
+    @client = @library.clients.find(params[:id])
+  end
 
   private def client_params
     params.require(:client).permit(:first_name, :second_name, :library_id)

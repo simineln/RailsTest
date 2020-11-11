@@ -17,6 +17,7 @@
       <td><%= client.first_name %></td>
       <td><%= client.second_name %></td>
       <td>
+        <%= link_to "View", library_client_path(@library, client), :class => "btn btn-info btn-sm", :role => "button" %>
         <%= link_to "Edit", edit_library_client_path(@library, client), :class => "btn btn-warning btn-sm", :role => "button" %>
         <%= link_to "Delete", library_client_path(@library, client), :class => "btn btn-danger btn-sm", :role => "button", method: :delete, data: {confirm: "Are you sure?"} %>
       </td>
